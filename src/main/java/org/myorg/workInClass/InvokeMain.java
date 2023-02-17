@@ -1,4 +1,4 @@
-package org.myorg;
+package org.myorg.workInClass;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

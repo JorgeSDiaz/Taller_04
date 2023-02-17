@@ -1,8 +1,9 @@
-package org.myorg;
+package org.myorg.notation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Test {
+public @interface RequestMapping {
+    String path();
 }

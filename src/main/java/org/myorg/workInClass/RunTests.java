@@ -1,4 +1,6 @@
-package org.myorg;
+package org.myorg.workInClass;
+
+import org.myorg.notation.RequestMapping;
 
 import java.lang.reflect.Method;
 

@@ -1,6 +1,6 @@
-package org.myorg;
+package org.myorg.workInClass;
 
-public class Foo {
+public class Faa {
     @Test
     public static void m1() {
     }
