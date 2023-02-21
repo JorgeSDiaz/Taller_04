@@ -4,19 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="364a4418-2c12-49d2-97ac-d055eefa0438" name="Changes" comment="InvokeMain">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/Testing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/http/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/notation/RequestMapping.java" afterDir="false" />
+    <list default="true" id="364a4418-2c12-49d2-97ac-d055eefa0438" name="Changes" comment="Generate Paths with Annotations">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ContentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/HttpProtocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ProcessNotation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/Faa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/Faa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/Foo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/Foo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/InvokeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/InvokeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/RunTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/myorg/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/myorg/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/Testing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/http/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/http/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/notation/RequestMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/RequestMapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/RunTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -49,10 +52,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/davis/OneDrive/Escritorio/AREP/Taller_04/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,6 +67,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\davis\OneDrive\Escritorio\AREP\Taller_04\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.myorg" />
     </key>
@@ -71,22 +79,9 @@
       <command value="mvn package" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Testing">
-    <configuration name="RunTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.myorg.workInClass.RunTests" />
-      <module name="Taller_04" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.myorg.workInClass.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Testing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.myorg.Testing" />
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.myorg.App" />
       <module name="Taller_04" />
       <extension name="coverage">
         <pattern>
@@ -100,8 +95,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Testing" />
-        <item itemvalue="Application.RunTests" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -114,7 +108,9 @@
       <option name="presentableId" value="Default" />
       <updated>1676657826900</updated>
       <workItem from="1676657828431" duration="3972000" />
-      <workItem from="1676662784069" duration="4393000" />
+      <workItem from="1676662784069" duration="4749000" />
+      <workItem from="1676938202680" duration="31000" />
+      <workItem from="1676938260688" duration="18961000" />
     </task>
     <task id="LOCAL-00001" summary="multi args">
       <created>1676660465063</created>
@@ -130,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676660946523</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Generate Paths with Annotations">
+      <created>1676667523187</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676667523187</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +142,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="multi args" />
     <MESSAGE value="InvokeMain" />
-    <option name="LAST_COMMIT_MESSAGE" value="InvokeMain" />
+    <MESSAGE value="Generate Paths with Annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generate Paths with Annotations" />
   </component>
 </project>

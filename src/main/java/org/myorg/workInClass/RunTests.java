@@ -1,7 +1,5 @@
 package org.myorg.workInClass;
 
-import org.myorg.notation.RequestMapping;
-
 import java.lang.reflect.Method;
 
 public class RunTests {

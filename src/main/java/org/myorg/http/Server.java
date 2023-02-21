@@ -1,19 +1,25 @@
 package org.myorg.http;
 
-import org.myorg.notation.RequestMapping;
+import org.myorg.framework.notation.ContentType;
+import org.myorg.framework.notation.Request;
+
+import static org.myorg.framework.notation.ProcessNotation.*;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Server {
 
-    static Map<String, Method> endPoints = new HashMap<>();
+    static Map<String, Request> endPoints = new HashMap<>();
+    static Map<String, Request> customEndPoints = new HashMap<>();
 
-    public static void run(String... args) throws IOException {
+    public static void run() throws IOException {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(32000);
@@ -22,7 +28,11 @@ public class Server {
             System.exit(1);
         }
 
-        getDefinedRequest(args);
+        endPoints = paths();
+        customEndPoints = customPaths();
+
+        System.out.println(endPoints);
+        System.out.println(customEndPoints);
 
         Socket clientSocket = null;
         while (!serverSocket.isClosed()) {
@@ -54,18 +64,53 @@ public class Server {
                 }
             }
 
-            Object value;
-            if (endPoints.containsKey(path)) {
-                try {
-                   value = (String) endPoints.get(path).invoke(null);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                value =  List.of(path, endPoints.get(path));
+            if (!endPoints.containsKey(path)) {
+                addNewEndpointFromCustomEndpoint(path);
             }
 
-            output.println(value);
+            byte[] value = new byte[0];
+            List<String> header = List.of("GET HTTP/1.1 400 Bad Request", "Content-Type: application/json");
+            if (endPoints.containsKey(path) && !endPoints.get(path).getContentType().equals(ContentType.NULL)) {
+                Request service = endPoints.get(path);
+                if (!service.useFiles()) {
+                    try {
+                        value = ((String)endPoints.get(path).getMethod().invoke(null)).getBytes();
+                        header = service.getHeader();
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (!service.getContentType().equals(ContentType.PLAIN)) {
+                    try {
+                        Method method = endPoints.get(path).getMethod();
+                        String paths = "/" + path.split("/")[path.split("/").length - 1];
+                        String filePath = String.valueOf(((File)endPoints.get(path).getMethod()
+                                .invoke(null, (Object)paths)).toPath());
+                        value = Files.readAllBytes(Paths.get(filePath));
+                        header = service.getHeader();
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            if (header.get(0).contains("400")) {
+                endPoints.remove(path);
+            }
+
+            for (String line: header) {
+                output.println(line);
+            }
+            output.println();
+
+            if (value.length > 0) {
+                outputStream.write(value);
+            } else {
+                List<String> show = new ArrayList<>();
+                show.addAll(endPoints.keySet().stream().toList());
+                show.addAll(customPaths().keySet().stream().toList());
+                output.println("{ \"EndPoints\":" + (show.stream().sorted().
+                        map(key -> "\"" + key + "\"").toList()) + ", \"Error\": \"Service no found\"}");
+            }
 
             output.close();
             input.close();
@@ -74,22 +119,20 @@ public class Server {
         serverSocket.close();
     }
 
-    private static void getDefinedRequest(String[] args) {
-        for (String arg: args) {
-            Class mainClass = null;
-            try {
-                mainClass = Class.forName(arg);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            List<Method> methods = Arrays.stream(mainClass.getMethods())
-                    .filter(method -> method.isAnnotationPresent(RequestMapping.class)).toList();
-            List<String> path = methods.stream()
-                    .map((Method method) -> method.getAnnotation(RequestMapping.class)).map((RequestMapping::path)).toList();
-            for (int position = 0; position < methods.size(); position++) {
-                List<Object> tuple = List.of(path.get(position), methods.get(position));
-                System.out.println(tuple);
-                endPoints.put(path.get(position), methods.get(position));
+    private static void addNewEndpointFromCustomEndpoint(String path) {
+        for (String customPAth: customEndPoints.keySet()) {
+            if (path.startsWith("/" + customPAth.split("/")[customPAth.split("/").length - 2])) {
+                Request block = customEndPoints.get(customPAth);
+                ContentType ctype = ContentType.NULL;
+                Method mtd = block.getMethod();
+
+                if (block.useFiles() && path.split("\\.").length > 1) {
+                    ctype = ContentType.valueOf(path.split("\\.")[1].toUpperCase());
+                } else {
+                    ctype = block.getContentType();
+                }
+
+                endPoints.put(path, generateRequest(ctype, mtd, block.useFiles()));
             }
         }
     }
