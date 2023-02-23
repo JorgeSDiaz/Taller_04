@@ -23,7 +23,7 @@ public class App {
         return "Hello World!";
     }
 
-    @RequestMapping(path = "/files/{file}", files = true)
+    @RequestMapping(path = "/{file}", files = true)
     public static File getFile(String file) {
         return new File("src/main/resources" + file);
     }

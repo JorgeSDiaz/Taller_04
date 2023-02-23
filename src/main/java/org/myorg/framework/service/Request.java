@@ -1,4 +1,6 @@
-package org.myorg.framework.notation;
+package org.myorg.framework.service;
+
+import org.myorg.framework.enums.ContentType;
 
 import java.lang.reflect.Method;
 import java.util.List;

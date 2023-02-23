@@ -1,4 +1,4 @@
-package org.myorg.framework.notation;
+package org.myorg.framework.enums;
 
 public enum HttpProtocol {
     GET,

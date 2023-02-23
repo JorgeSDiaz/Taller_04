@@ -1,5 +1,8 @@
 package org.myorg.framework.notation;
 
+import org.myorg.framework.enums.ContentType;
+import org.myorg.framework.service.Request;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 package org.myorg.http;
 
-import org.myorg.framework.notation.ContentType;
-import org.myorg.framework.notation.Request;
+import org.myorg.framework.enums.ContentType;
+import org.myorg.framework.service.Request;
 
 import static org.myorg.framework.notation.ProcessNotation.*;
 

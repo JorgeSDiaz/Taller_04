@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="364a4418-2c12-49d2-97ac-d055eefa0438" name="Changes" comment="Generate Paths with Annotations">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ContentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/HttpProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ProcessNotation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/index.html" afterDir="false" />
+    <list default="true" id="364a4418-2c12-49d2-97ac-d055eefa0438" name="Changes" comment="Receive Params From Path&#10;Define if request use files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/Testing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ContentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/enums/ContentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/HttpProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/enums/HttpProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ProcessNotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/ProcessNotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/service/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/RequestMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/RequestMapping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/http/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/http/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/notation/RequestMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/framework/notation/RequestMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myorg/workInClass/RunTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,22 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/davis/OneDrive/Escritorio/AREP/Taller_04/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/davis/OneDrive/Escritorio/AREP/Taller_04/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davis\OneDrive\Escritorio\AREP\Taller_04\src\main\resources" />
@@ -110,7 +105,9 @@
       <workItem from="1676657828431" duration="3972000" />
       <workItem from="1676662784069" duration="4749000" />
       <workItem from="1676938202680" duration="31000" />
-      <workItem from="1676938260688" duration="18961000" />
+      <workItem from="1676938260688" duration="19017000" />
+      <workItem from="1677093636011" duration="115000" />
+      <workItem from="1677182233652" duration="460000" />
     </task>
     <task id="LOCAL-00001" summary="multi args">
       <created>1676660465063</created>
@@ -133,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676667523187</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Receive Params From Path&#10;Define if request use files">
+      <created>1676959794690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676959794690</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +147,7 @@
     <MESSAGE value="multi args" />
     <MESSAGE value="InvokeMain" />
     <MESSAGE value="Generate Paths with Annotations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generate Paths with Annotations" />
+    <MESSAGE value="Receive Params From Path&#10;Define if request use files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Receive Params From Path&#10;Define if request use files" />
   </component>
 </project>

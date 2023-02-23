@@ -1,5 +1,7 @@
 package org.myorg.framework.notation;
 
+import org.myorg.framework.enums.ContentType;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
