@@ -16,15 +16,24 @@ import java.util.*;
 
 public class Server {
 
-    static Map<String, Request> endPoints = new HashMap<>();
-    static Map<String, Request> customEndPoints = new HashMap<>();
+    private static Map<String, Request> endPoints = new HashMap<>();
+    private static Map<String, Request> customEndPoints = new HashMap<>();
+    private static final Server _instance = new Server();
+    private static int defaultPort = 32000;
 
-    public static void run() throws IOException {
+    public Server(){}
+
+    public static Server run() throws IOException {
+        run(defaultPort);
+        return _instance;
+    }
+
+    private static void run(int port) throws IOException {
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket(32000);
+            serverSocket = new ServerSocket(port);
         } catch (IOException e) {
-            System.out.println("Couldn't listen on port: 32000");
+            System.out.println("Couldn't listen on port: " + port);
             System.exit(1);
         }
 
@@ -38,6 +47,7 @@ public class Server {
         while (!serverSocket.isClosed()) {
             try {
                 System.out.println("Ready to receive");
+                System.out.println("Server is running on: http://localhost:" + port + "/");
                 clientSocket = serverSocket.accept();
             } catch (IOException e) {
                 System.out.println("Accept failed");
